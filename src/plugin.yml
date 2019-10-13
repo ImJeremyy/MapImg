@@ -1,0 +1,10 @@
+name: MapImg
+version: 1.0
+api-version: 1.13
+main: minestarnetwork.mapimg.MapImgMain
+author: MarkIsCool
+description: Turn Image URLs into maps
+commands:
+  mapimg:
+    usage: /<command>
+    description: Base command
