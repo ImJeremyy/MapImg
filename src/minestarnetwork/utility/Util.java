@@ -82,13 +82,22 @@ public class Util {
         meta.setDisplayName(Util.cleanColourize("&6" + name + "(&7" + x + "&6, &7" + y + "&6)"));
         meta.setMapView(Bukkit.createMap(world));
         MapView view = meta.getMapView();
-        view.setTrackingPosition(false);
         view.setUnlimitedTracking(false);
         view.getRenderers().clear();
         view.addRenderer(new Renderer(completeImage, width, height, x, y));
         meta.setMapView(view);
         map.setItemMeta(meta);
         return map;
+    }
+
+    public static boolean invalidURLImage(String urlName) {
+        try {
+            URL url = new URL(urlName);
+            BufferedImage image = ImageIO.read(url);
+        } catch (Exception e) {
+            return true;
+        }
+        return false;
     }
 
 }
