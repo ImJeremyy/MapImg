@@ -1,6 +1,5 @@
 package minestarnetwork.commands;
 
-import minestarnetwork.MapImgMain;
 import minestarnetwork.map.CustomMap;
 import minestarnetwork.utility.Util;
 import org.bukkit.command.Command;
@@ -12,30 +11,25 @@ import org.bukkit.inventory.ItemStack;
 import java.util.List;
 
 public class MapImgCommand implements CommandExecutor {
-
-    public MapImgCommand(MapImgMain plugin) {
-
-    }
-
     /**
+     * /mapimg command
      * /mapimg get url width height 4
      * /mapimg help 1
      */
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(sender instanceof Player) {
             Player player = (Player) sender;
             if (args.length == 1) {
-                if (args[0].equalsIgnoreCase("help")) {
+                if (args[0].equalsIgnoreCase("help")) { // /mapimg help
                     player.sendMessage(Util.cleanColourize("&6MapImg &bby MarkIsCool"));
-                    player.sendMessage(Util.cleanColourize("&6/mapimg get &b<url> <width> <height> &f- Get an img map with desired width and height."));
                     player.sendMessage(Util.cleanColourize("&6/mapimg help &f- Displays this message."));
+                    player.sendMessage(Util.cleanColourize("&6/mapimg get &b<url> <width> <height> &f- Get an img map with desired width and height."));
                 } else {
                     player.sendMessage(Util.colourize("&cInvalid command. /mapimg help"));
                 }
             } else if(args.length == 4) {
-                if(args[0].equalsIgnoreCase("get")) {
+                if(args[0].equalsIgnoreCase("get")) { // /mapimg get url width height
                     String url = args[1];
                     int width, height;
                     try {
@@ -50,7 +44,7 @@ public class MapImgCommand implements CommandExecutor {
                         List<ItemStack> items = map.getMaps();
                         int size = items.size();
                         int emptySlots = 36 - player.getInventory().getContents().length;
-                        if(size <= emptySlots) {//checks if amount of maps is less than empty slots
+                        if(size <= emptySlots) { //checks if amount of maps is less than empty slots
                             items.stream().forEach(x -> player.getInventory().addItem(x));
                             player.sendMessage(Util.colourize("&aSuccessfully given map with URL &6" + url));
                         } else {

@@ -8,6 +8,10 @@ import org.bukkit.map.MapView;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * Renderer is a MapRenderer
+ *
+ */
 public class Renderer extends MapRenderer {
 
     private BufferedImage image;
@@ -23,6 +27,8 @@ public class Renderer extends MapRenderer {
 
     @Override
     public void render(MapView view, MapCanvas canvas, Player player) {
-        canvas.drawImage(0, 0, Util.getScaledImage(Util.cropImage(image, width, height, x, y), 128, 128));
+        BufferedImage croppedImage = Util.cropImage(image, width, height, x, y);
+        BufferedImage scaledImage = Util.getScaledImage(croppedImage, 128, 128);
+        canvas.drawImage(0, 0, scaledImage);
     }
 }

@@ -1,6 +1,5 @@
 package minestarnetwork;
 
-import minestarnetwork.commands.DebugCommand;
 import minestarnetwork.commands.MapImgCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -21,6 +20,7 @@ public class MapImgMain extends JavaPlugin {
     }
 
     private void initCommands() {
-        getCommand("mapimg").setExecutor(new MapImgCommand(this));
+        getCommand("mapimg").setExecutor(new MapImgCommand());
+        //getCommand("test").setExecutor(new DebugCommand());
     }
 }

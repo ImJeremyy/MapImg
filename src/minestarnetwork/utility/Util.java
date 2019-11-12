@@ -16,8 +16,15 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * Contains public static methods for wide-use.
+ *
+ */
 public class Util {
 
+    // ============================================================================================================
+    // String utility methods
+    // ============================================================================================================
     public static String colourize(final String text) {
         return ChatColor.translateAlternateColorCodes('&', "&b[&6MapImg&b]&r " + text);
     }
@@ -30,10 +37,15 @@ public class Util {
         return ChatColor.stripColor(text);
     }
 
+    // ============================================================================================================
+    // Image handling methods
+    // ============================================================================================================
+
     /**
+     * Scale (resize) a BufferedImage and get a new BufferedImage.
      * @param image - the image to be scaled
-     * @param width - x pixels
-     * @param height - y pixels
+     * @param width - x pixels (eg 128)
+     * @param height - y pixels (eg 128)
      * @return New scaled image
      */
     public static BufferedImage getScaledImage(BufferedImage image, int width, int height) {
@@ -45,6 +57,11 @@ public class Util {
         return newImg;
     }
 
+    /**
+     * Get the BufferedImage from a String url
+     * @param urlString url of the image
+     * @return BufferedImage object | can return null, if url not valid.
+     */
     public static BufferedImage getImage(String urlString) {
         try {
             URL url = new URL(urlString);
@@ -75,7 +92,39 @@ public class Util {
         return croppedImg.getSubimage(coordWidth*(xCoord - 1), coordHeight*(yCoord - 1), coordWidth, coordHeight);
     }
 
+    /**
+     * Checks if a URL is a valid image
+     * @param urlName Url of the image
+     * @return true if the image is invalid (if an error is thrown basically)
+     */
+    public static boolean invalidURLImage(String urlName) {
+        try {
+            URL url = new URL(urlName);
+            BufferedImage image = ImageIO.read(url);
+        } catch (Exception e) {
+            return true;
+        }
+        return false;
+    }
 
+    // ============================================================================================================
+    // ItemStack methods
+    // ============================================================================================================
+
+    /**
+     * Create an ItemStack object of type Material.FILLED_MAP
+     * Uses Renderer class
+     * Tampers with MapMeta and MapView to add a portion of the complete BufferedImage,
+     * given the width and height (in blocks) of the image and the desired x & y coordinat
+     * @param name
+     * @param world
+     * @param completeImage
+     * @param width
+     * @param height
+     * @param x
+     * @param y
+     * @return ItemStack object
+     */
     public static ItemStack createMapItemStack(String name, World world, BufferedImage completeImage, int width, int height, int x, int y) {
         ItemStack map = new ItemStack(Material.FILLED_MAP, 1);
         MapMeta meta = (MapMeta) map.getItemMeta();
@@ -88,16 +137,6 @@ public class Util {
         meta.setMapView(view);
         map.setItemMeta(meta);
         return map;
-    }
-
-    public static boolean invalidURLImage(String urlName) {
-        try {
-            URL url = new URL(urlName);
-            BufferedImage image = ImageIO.read(url);
-        } catch (Exception e) {
-            return true;
-        }
-        return false;
     }
 
 }
