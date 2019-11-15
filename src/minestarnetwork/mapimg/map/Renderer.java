@@ -18,7 +18,7 @@ public class Renderer extends MapRenderer {
     private int width,height,x,y;
 
     public Renderer(BufferedImage imageToRender, int width, int height, int xCoord, int yCoord) {
-        image = imageToRender;
+        this.image = imageToRender;
         this.width = width;
         this.height = height;
         this.x = xCoord;

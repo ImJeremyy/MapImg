@@ -116,10 +116,10 @@ public class Util {
      * Create an ItemStack object of type Material.FILLED_MAP
      * Uses Renderer class
      * Tampers with MapMeta and MapView to add a portion of the complete BufferedImage,
-     * given the width and height (in blocks) of the image and the desired x & y coordinat
-     * @param name
-     * @param world
-     * @param completeImage
+     * given the width and height (in blocks) of the image and the desired x & y coordinates
+     * @param name name of itemstack (colourized &)
+     * @param world world where the map is going to be in
+     * @param completeImage complete image
      * @param width
      * @param height
      * @param x
@@ -129,7 +129,7 @@ public class Util {
     public static ItemStack createMapItemStack(String name, World world, BufferedImage completeImage, int width, int height, int x, int y) {
         ItemStack map = new ItemStack(Material.FILLED_MAP, 1);
         MapMeta meta = (MapMeta) map.getItemMeta();
-        meta.setDisplayName(Util.cleanColourize("&6" + name + "(&7" + x + "&6, &7" + y + "&6)"));
+        meta.setDisplayName(Util.cleanColourize("&6" + name + "(&7" + (x-1) + "&6, &7" + (y-1) + "&6)"));
         meta.setMapView(Bukkit.createMap(world));
         MapView view = meta.getMapView();
         view.setUnlimitedTracking(false);
