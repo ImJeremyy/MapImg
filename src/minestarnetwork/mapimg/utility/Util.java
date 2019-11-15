@@ -1,7 +1,7 @@
-package minestarnetwork.utility;
+package minestarnetwork.mapimg.utility;
 
-import minestarnetwork.MapImgMain;
-import minestarnetwork.map.Renderer;
+import minestarnetwork.mapimg.MapImgMain;
+import minestarnetwork.mapimg.map.Renderer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -16,7 +16,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
 
 /**
  * Contains public static methods for wide-use.

@@ -1,6 +1,6 @@
-package minestarnetwork.map;
+package minestarnetwork.mapimg.map;
 
-import minestarnetwork.utility.Util;
+import minestarnetwork.mapimg.utility.Util;
 import org.bukkit.entity.Player;
 import org.bukkit.map.MapCanvas;
 import org.bukkit.map.MapRenderer;

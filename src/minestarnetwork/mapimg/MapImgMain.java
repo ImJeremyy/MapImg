@@ -1,6 +1,6 @@
-package minestarnetwork;
+package minestarnetwork.mapimg;
 
-import minestarnetwork.commands.MapImgCommand;
+import minestarnetwork.mapimg.commands.MapImgCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Logger;
