@@ -21,6 +21,5 @@ public class MapImgMain extends JavaPlugin {
 
     private void initCommands() {
         getCommand("mapimg").setExecutor(new MapImgCommand());
-        //getCommand("test").setExecutor(new DebugCommand());
     }
 }

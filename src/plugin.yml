@@ -2,10 +2,9 @@ name: MapImg
 version: 1.0
 api-version: 1.13
 main: minestarnetwork.MapImgMain
+descriptin: Runs version of spigot 1.14.4
+author: MarkIsCool
 commands:
   mapimg:
     usage: /<command>
     description: Base MapImg command
-  test:
-    usage: /<command>
-    description: Debug Command

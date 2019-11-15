@@ -40,13 +40,15 @@ public class MapImgCommand implements CommandExecutor {
                         return true;
                     }
                     if(!Util.invalidURLImage(url)) {
+                        player.sendMessage(Util.colourize("&aCreating map... This may take a while."));
                         CustomMap map = new CustomMap(player.getWorld(), url, width, height);
                         List<ItemStack> items = map.getMaps();
                         int size = items.size();
-                        int emptySlots = 36 - player.getInventory().getContents().length;
-                        if(size <= emptySlots) { //checks if amount of maps is less than empty slots
+                        int emptySlots = Util.getEmptySlots(player.getInventory()); //subtract by 4 because it counts the armor slots
+                        System.out.println(size + " <= " + emptySlots);
+                        if(size <= emptySlots && player.getInventory().firstEmpty() != -1) { //checks if amount of maps is less than empty slots
                             items.stream().forEach(x -> player.getInventory().addItem(x));
-                            player.sendMessage(Util.colourize("&aSuccessfully given map with URL &6" + url));
+                            player.sendMessage(Util.colourize("&aSuccessfully given map with URL: &6" + url));
                         } else {
                             player.sendMessage(Util.colourize("&cYour inventory is full!"));
                         }

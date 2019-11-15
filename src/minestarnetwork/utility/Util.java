@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.MapMeta;
 import org.bukkit.map.MapView;
@@ -15,6 +16,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 
 /**
  * Contains public static methods for wide-use.
@@ -137,6 +139,21 @@ public class Util {
         meta.setMapView(view);
         map.setItemMeta(meta);
         return map;
+    }
+
+    /**
+     * Returns amount of empty slots in an inventory
+     * @param inventory Inventory object
+     * @return amount of empty slots
+     */
+    public static int getEmptySlots(Inventory inventory) {
+        int counter = 0;
+        for(ItemStack item : inventory.getContents()) {
+            if (item == null) {
+                counter++;
+            }
+        }
+        return counter;
     }
 
 }

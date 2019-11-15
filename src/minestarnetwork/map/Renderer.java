@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * Renderer is a MapRenderer
- *
+ * Used in MapView.addRenderer();
  */
 public class Renderer extends MapRenderer {
 
