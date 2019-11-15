@@ -1,7 +1,7 @@
 name: MapImg
-version: 1.0
+version: 1.02
 api-version: 1.13
-main: minestarnetwork.MapImgMain
+main: minestarnetwork.mapimg.MapImgMain
 descriptin: Runs version of spigot 1.14.4
 author: MarkIsCool
 commands:

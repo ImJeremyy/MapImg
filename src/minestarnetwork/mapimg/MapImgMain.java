@@ -13,6 +13,7 @@ public class MapImgMain extends JavaPlugin {
     public void onEnable() {
         initObjects();
         initCommands();
+        new MetricsLite(this);
     }
 
     private void initObjects() {
