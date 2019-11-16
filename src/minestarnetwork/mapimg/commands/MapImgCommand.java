@@ -41,13 +41,12 @@ public class MapImgCommand implements CommandExecutor {
                             player.sendMessage(Util.colourize("&cInvalid width or height. Must be numbers. /mapimg help"));
                             return true;
                         }
-                        if (!Util.invalidURLImage(url)) {
+                        if (!Util.isInvalidURLImage(url)) { //if it is not an invalid url image
                             player.sendMessage(Util.colourize("&aCreating map... This may take a while."));
                             CustomMap map = new CustomMap(player.getWorld(), url, width, height);
                             List<ItemStack> items = map.getMaps();
                             int size = items.size();
                             int emptySlots = Util.getEmptySlots(player.getInventory());
-                            System.out.println(size + " <= " + emptySlots);
                             if (size <= emptySlots && player.getInventory().firstEmpty() != -1) { //checks if amount of maps is less than empty slots and if there is an available slot in general.
                                 items.stream().forEach(x -> player.getInventory().addItem(x));
                                 player.sendMessage(Util.colourize("&aSuccessfully given map with URL: &6" + url));

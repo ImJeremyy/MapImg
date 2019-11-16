@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -64,14 +65,16 @@ public class Util {
      * @return BufferedImage object | can return null, if url not valid.
      */
     public static BufferedImage getImage(String urlString) {
+        URL url;
+        BufferedImage image = null;
         try {
-            URL url = new URL(urlString);
-            return ImageIO.read(url);
+            url = new URL(urlString);
+            image = ImageIO.read(url);
         } catch (IOException e) {
             MapImgMain.log.warning(Util.colourize("&cAn invalid URL was inputted."));
             e.printStackTrace();
-            return null;
         }
+        return image;
     }
 
     /**
@@ -98,11 +101,13 @@ public class Util {
      * @param urlName Url of the image
      * @return true if the image is invalid (if an error is thrown basically)
      */
-    public static boolean invalidURLImage(String urlName) {
+    public static boolean isInvalidURLImage(String urlName) {
         try {
             URL url = new URL(urlName);
             BufferedImage image = ImageIO.read(url);
-        } catch (Exception e) {
+            Util.cropImage(image, 1, 1, 1, 1);
+            System.out.println(image==null);
+        } catch (IOException | NullPointerException e) {
             return true;
         }
         return false;
